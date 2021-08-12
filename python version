@@ -1,0 +1,54 @@
+import sqlite3
+connect1 = sqlite3.connect('movies2.db')
+print("Entry to database ")
+connect1.execute('''CREATE TABLE movies1
+ (id INT PRIMARY KEY NOT NULL,
+ name TEXT NOT NULL,
+ Actor TEXT NOT NULL,
+ Actress TEXT NOT NULL,
+ Director TEXT NOT NULL,
+ Year_of_release TEXT NOT NULL);''')
+ 
+connect1.execute("INSERT INTO movies1 (id,Name,Actor,Actress,Director,Year-of_release) \
+ VALUES (1, '', 'Inception', 'Leonardo di Caprio', 'Marlon catlliod', 'Christopher Nolan', 2010)");
+ 
+connect1.execute("INSERT INTO movies1 (id,Name,Actor,Actress,Director,Year-of_release) \
+ VALUES (2, 'Pulp Fiction', 'Samual L Jackson', 'Uma Truman', 'Quentin Tarantino', 1994)");
+ 
+connect1.execute("INSERT INTO movies1 (id,Name,Actor,Actress,Director,Year-of_release)\
+ VALUES (3, 'Titanic', 'Leonardo di Caprio', 'Kate Winslet', 'James Cameron', 1997)");
+ 
+connect1.execute("INSERT INTO movies1 (id,Name,Actor,Actress,Director,Year-of_release) \
+ VALUES (4, 'Guardians of the Galaxy', 'Chris Pratt', 'Zoe Saldana', 'James Gunn', 2014)");
+ 
+connect1.execute("INSERT INTO movies1 (id,Name,Actor,Actress,Director,Year-of_release) \
+ VALUES (5, 'Avatar', 'Sam Worthington', 'Zoe Saldana', 'James Cameron' ,2009)");
+ 
+connect1.execute"INSERT INTO movies1 (id,Name,Actor,Actress,Director,Year-of_release) \
+ VALUES (6, 'Shutter Island', 'Leonardo di Caprio', 'Michelle Williams', 'Martin Scorsese' ,2010)");
+ 
+connect1.execute("INSERT INTO movies1 (id,Name,Actor,Actress,Director,Year-of_release) \
+ VALUES (7, 'The Godfather', 'Al Pachino', 'Diane Keaton', 'Francis Ford Coppola' ,1972)");
+ 
+connect1.execute("INSERT INTO movies1 (id,Name,Actor,Actress,Director,Year-of_release)\
+ VALUES (8, 'Taxi Driver', 'Robert de Niro', 'Jodie Foster', 'Martin Scorsese' ,1976)");
+ 
+for row in cursor:
+  print("No. = ", row[0])
+  print("Name = ", row[1])
+  print("Actor = ", row[2])
+  print("Actress = ", row[3])
+  print("Director = ", row[4])
+  print("Year of release = ", row[5], "\n")
+print("Movies Of Leonardo di Caprio \n")
+actorname = connect1.execute("SELECT id,Name,Actor,Actress,Director,Year-of_release from
+movies1 WHERE Actor = 'leonardo di caprio' ")
+for row in actorname:
+  print("No. = ", row[0])
+  print("Name = ", row[1])
+  print("Actor = ", row[2])
+  print("Actress = ", row[3])
+  print("Director = ", row[4])
+  print("Year of release = ", row[5], "\n")
+print("query executed ")
+connect1.close()
