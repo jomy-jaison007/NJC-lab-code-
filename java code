@@ -1,0 +1,42 @@
+package net.codejava;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
+public class Movies2 {
+public static void main(String[] args) throws SQLException{
+			String jdbcUrl = "jdbc:sqlite:/E:\\files\\sqlite-tools-win32-x86-3360000\\movies2.db";
+			Connection connection = DriverManager.getConnection(jdbcUrl);
+
+
+				String sql ="create table movies3(Name varchar(100),Actor varchar(50),Actress varchar(50),Director varchar(50), Year_of_release int(4))";
+				Statement statement = connection.createStatement();
+				statement.executeUpdate(sql);
+				System.out.println(" Table for Movie Details created");
+				statement.executeUpdate("INSERT INTO movies2 " + "VALUES ('Inception', 'Leonardo di Caprio', 'Marlon catlliod', 'Christopher Nolan', 2010)");
+				statement.executeUpdate("INSERT INTO movies2 " + "VALUES ('pulp fiction', 'Samual L jackson', 'uma truman', 'quentin tarantino', 1994)");
+				statement.executeUpdate("INSERT INTO movies2 " + "VALUES ('Titanic', 'Leonardo di Caprio', 'kate winslet', 'james cameron', 1997)");
+				statement.executeUpdate("INSERT INTO movies2 " + "VALUES ('Guardians of the galaxy', 'Chris Pratt', 'zoe saldana', 'james gunn', 2014)");
+			
+				
+				
+					
+					String sql1="SELECT * FROM movies2";
+					statement.executeQuery(sql1);
+					ResultSet result = statement.executeQuery(sql1);
+					
+					while(result.next())
+					{ String Name=result.getString("Name");
+					String Actor=result.getString("Actor");
+					String Actress=result.getString("Actress");
+					String Director=result.getString("Director");
+					String year=result.getString("Year_of_release");
+					System.out.println(Name+"|"+Actor+"|"+Actress+"|"+ Director + "|"+year);
+					
+				
+				
+			
+}
+}
+}
